@@ -2,6 +2,7 @@ package org.azati.courses.jms;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import javassist.NotFoundException;
 import org.azati.courses.constans.ConstantMessage;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.TextMessage;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +44,8 @@ public class Listener {
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        return gson.toJson(rooms);
+        Type  foo = new TypeToken<List<Room>>(){}.getType();
+        return gson.toJson(rooms, foo);
     }
 
 }
