@@ -38,13 +38,12 @@ public class Listener {
             } catch (NotFoundException e) {
                 log.info(e.getMessage() + "; Stack trace : " + Arrays.toString(e.getStackTrace()));
             }
-            //Sender sender = new Sender ();
-            //sender.sendMessage("queue.out", rooms);
         }
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         Type  foo = new TypeToken<List<Room>>(){}.getType();
+        log.info("send message into queue.out");
         return gson.toJson(rooms, foo);
     }
 

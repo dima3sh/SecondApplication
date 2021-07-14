@@ -1,7 +1,6 @@
 package org.azati.courses.entity;
-import org.azati.courses.enums.StatusRoom;
-import java.util.List;
 
+import java.util.List;
 
 
 public class Room {
@@ -10,9 +9,10 @@ public class Room {
     private Boolean isFreeRoom;
     private Integer numberOfBeds;
     private Integer costPerHour;
-     private StatusRoom statusRoom;
+    private DirectoryStatus directoryStatus;
     private List<Equipment> equipments;
     private List<Guest> guests;
+
 
     public Long getRoomId() {
         return roomId;
@@ -46,14 +46,6 @@ public class Room {
         this.costPerHour = costPerHour;
     }
 
-    public StatusRoom getStatusRoom() {
-        return statusRoom;
-    }
-
-    public void setStatusRoom(StatusRoom statusRoom) {
-        this.statusRoom = statusRoom;
-    }
-
     public List<Equipment> getEquipments() {
         return equipments;
     }
@@ -70,6 +62,14 @@ public class Room {
         this.guests = guests;
     }
 
+    public DirectoryStatus getDirectoryStatus() {
+        return directoryStatus;
+    }
+
+    public void setDirectoryStatus(DirectoryStatus directoryStatus) {
+        this.directoryStatus = directoryStatus;
+    }
+
     @Override
     public String toString() {
         return "Room{" +
@@ -77,7 +77,6 @@ public class Room {
                 ", isFreeRoom=" + isFreeRoom +
                 ", numberOfBeds=" + numberOfBeds +
                 ", costPerHour=" + costPerHour +
-                ", statusRoom=" + statusRoom +
                 ", equipments=" + equipments +
                 ", guest=" + guests +
                 '}';
@@ -90,7 +89,7 @@ public class Room {
         Room room = (Room) o;
         return roomId.equals(room.roomId) && isFreeRoom.equals(room.isFreeRoom)
                 && numberOfBeds.equals(room.numberOfBeds) && costPerHour.equals(room.costPerHour)
-                && statusRoom.equals(room.statusRoom) && equipments.equals(room.equipments);
+                && equipments.equals(room.equipments);
     }
 
     @Override
@@ -102,6 +101,4 @@ public class Room {
         result = 31 * result + equipments.hashCode();
         return result;
     }
-
-
 }
